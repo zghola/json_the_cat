@@ -1,6 +1,7 @@
 const request = require('request');
 
-const fetchBreedDescription = function(breedName, callback) {
+
+const breedFetcher = function(breedName, callback) {
 
   const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
   request(url, (error, resp, body) => {
@@ -25,7 +26,7 @@ const fetchBreedDescription = function(breedName, callback) {
 };
 const breedName = process.argv[2];
 
-fetchBreedDescription(breedName, (error, desc) => {
+breedFetcher(breedName, (error, desc) => {
   if (error) {
     console.log('Error fetch details:', error);
   } else {
